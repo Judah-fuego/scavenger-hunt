@@ -8,6 +8,8 @@ interface Step {
   hints: string[];
   mapUrl?: string;
   mapLabel?: string;
+  hintMapUrl?: string;
+  hintMapLabel?: string;
 }
 
 const STEPS: Step[] = [
@@ -30,10 +32,12 @@ const STEPS: Step[] = [
     title: "A Familiar Place",
     clue: "We were here only a couple of years ago. Once there, head towards your next destination.",
     hints: ['Think of "high school" in another language.'],
+    hintMapUrl: "https://maps.google.com/?q=Liceu+Metro+Station,+Barcelona",
+    hintMapLabel: "Liceu Metro Stop",
   },
   {
     title: "Not Straight, Not Curved",
-    clue: "You shall continue on to a place that is not straight or curved but ___",
+    clue: "You shall continue on to a place that is not straight or curved but _ _ _ _ _ _ _ _",
     hints: ["Go to Diagonal and get off."],
   },
   {
@@ -231,7 +235,7 @@ export default function Home() {
             <p className="text-5xl select-none">&#10047;</p>
             <h1 className="font-serif text-4xl font-semibold">You made it!</h1>
             <p className="text-muted text-lg leading-relaxed">
-              Now enjoy what&apos;s waiting for you.
+              Enjoy the flowers :)
             </p>
           </div>
 
@@ -323,6 +327,17 @@ export default function Home() {
                   >
                     <MapIcon />
                     Open in Maps
+                  </a>
+                )}
+                {step.hintMapUrl && i === step.hints.length - 1 && (
+                  <a
+                    href={step.hintMapUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover font-medium transition-colors mt-2"
+                  >
+                    <MapIcon />
+                    {step.hintMapLabel || "Open in Maps"}
                   </a>
                 )}
               </div>
