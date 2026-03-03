@@ -94,8 +94,8 @@ function ClueLines({ text }: { text: string }) {
           <p
             key={i}
             className={`leading-relaxed ${line.includes("___") || line.match(/^\d{2}\.\d+/)
-                ? "font-serif text-lg font-semibold text-foreground"
-                : "text-foreground/85"
+              ? "font-serif text-lg font-semibold text-foreground"
+              : "text-foreground/85"
               }`}
           >
             {line}
@@ -192,7 +192,7 @@ export default function Home() {
               A Scavenger Hunt
             </h1>
             <p className="font-serif text-2xl sm:text-3xl text-accent italic">
-              Scumpa Mea
+              for Scumpa Mea
             </p>
           </div>
 
