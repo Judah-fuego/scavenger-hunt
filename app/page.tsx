@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 interface Step {
   title: string;
@@ -10,21 +11,24 @@ interface Step {
   mapLabel?: string;
   hintMapUrl?: string;
   hintMapLabel?: string;
+  image?: string;
 }
 
 const STEPS: Step[] = [
   {
-    title: "Starting Point",
-    clue: "Head to your first location. Use these coordinates to find where your adventure begins.",
+    title: "For Stefi or Judah",
+    clue: "Head to your first location to begin your adventure.",
     mapUrl: "https://maps.google.com/?q=41.381753,2.175885",
     mapLabel: "41.381753, 2.175885",
-    hints: [],
+    image: "/order-confirmation.png",
+    hints: [
+      "Look for BAF Art Store — pick up the markers from your order!",
+    ],
   },
   {
-    title: "For Stefi or Judah",
-    clue: "A couple of stores towards Jaume I from your current location will give you the answer.\n\nFill in the blank:\nI _____ You",
+    title: "Fill in the Blank",
+    clue: "A couple of stores towards Jaume I from your current location will give you the answer.\n\nI _____ You",
     hints: [
-      "Look for BAF Art Store nearby.",
       "The store might be gone now — the answer is love.",
     ],
   },
@@ -295,6 +299,18 @@ export default function Home() {
               <MapIcon />
               {step.mapLabel || "Open in Maps"}
             </a>
+          )}
+
+          {step.image && (
+            <div className="mt-3 rounded-xl overflow-hidden border border-accent-border/30">
+              <Image
+                src={step.image}
+                alt="Reference"
+                width={600}
+                height={200}
+                className="w-full h-auto"
+              />
+            </div>
           )}
         </div>
 
